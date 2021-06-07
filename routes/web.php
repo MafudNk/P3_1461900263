@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',  [GuruController::class, 'index']);
 
-Route::get('/guru', [GuruController::class, 'index']);
-Route::get('/guru/create', [GuruController::class, 'create']);
-Route::post('/guru/store', [GuruController::class, 'store']);
-Route::get('/guru/edit/{id}', ['uses'=>'FooController@show']);
+// Route::get('/guru', [GuruController::class, 'index']);
+// Route::get('/guru/create', [GuruController::class, 'create']);
+// Route::post('/guru/store', [GuruController::class, 'store']);
+// Route::get('/guru/{id}/edit/',[GuruController::class, 'edit']);
+Route::resource('guru', GuruController::class);

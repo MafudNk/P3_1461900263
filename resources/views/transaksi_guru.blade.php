@@ -42,8 +42,13 @@
                     <td>{{ $dt->nama }}</td>
                     <td>{{ $dt->mengajar }}</td>
                     <td>
-                        <a href="/guru/edit/{{ $dt->id }}" class="btn btn-info">Update</a>
-                        <a href="/guru/delete/{{ $dt->id }}" class="btn btn-danger">Delete</a>
+                        <a href="/guru/{{ $dt->id }}/edit/" class="btn btn-info">Update</a>
+                        <form action="{{ route('guru.destroy', $dt->id) }}" method="POST" class="inline-block">
+                            {!! method_field('delete') . csrf_field() !!}
+                            <button type="submit" class="btn btn-danger">
+                                Delete
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

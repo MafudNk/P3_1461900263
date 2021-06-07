@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guru;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,8 +17,6 @@ class GuruController extends Controller
     {
         $data = DB::table('guru')
         ->get();
-        // print_r($data);
-        // exit;
         return view('transaksi_guru', ['data' => $data]);
     }
 
@@ -83,10 +82,8 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Guru $guru)
     {
-        print_r($id);exit;
-        $guru = DB::table('guru')->where('guru',$id)->get();
         return view('guru_edit',['data' => $guru]);
     }
 
@@ -97,9 +94,13 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Guru $guru)
     {
-        //
+        $data = $request->all();
+
+        $guru->update($data);
+
+        return redirect()->route('guru.index');
     }
 
     /**
@@ -108,8 +109,10 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Guru $guru)
     {
-        //
+        $guru->delete();
+
+        return redirect()->route('guru.index');
     }
 }

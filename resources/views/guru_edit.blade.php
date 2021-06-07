@@ -17,20 +17,19 @@
     <div class="container">
         <div class="col-md-12">
             <div style="height: 15px;"></div>
-            @foreach($data as $dt)
-            <form action="/guru/store" method="POST">
+            <form action="{{ route('guru.update', $data->id) }}" method="post">
             @csrf
+            @method('put')
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nama</label>
-                    <input type="text" class="form-control" id="nama" name="nama" value="{{ $dt->nama }}" placeholder="Enter Nama">
+                    <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama') ?? $data->nama }}" placeholder="Enter Nama">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Mengajar</label>
-                    <input type="text" class="form-control" id="mengajar" name="mengajar" value="{{ $dt->mengajar }}" placeholder="Enter Mengajar">
+                    <input type="text" class="form-control" id="mengajar" name="mengajar" value="{{ old('mengajar') ?? $data->mengajar }}" placeholder="Enter Mengajar">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-            @endforeach
         </div>
     </div>
 

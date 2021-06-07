@@ -17,7 +17,7 @@
     <div class="container">
         <div class="col-md-12">
             <div style="height: 15px;"></div>
-            <form action="/guru/store" method="POST">
+            <form action="{{route('guru.store')}}" method="POST">
             @csrf
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nama</label>
